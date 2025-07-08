@@ -1,0 +1,20 @@
+@startuml
+title Domain Model – API-Key Backend
+
+class ApiKey {
+  +token     : String
+  +customer  : String
+  +maxUses   : Int
+  +used      : Int
+  +remaining : Int
+}
+
+class Installation {
+  +started  : LocalDateTime
+  +finished : LocalDateTime   ' «nullable»
+}
+
+note right of Installation
+  «nullable» finished
+end note
+@enduml

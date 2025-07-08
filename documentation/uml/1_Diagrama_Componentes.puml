@@ -1,0 +1,29 @@
+@startuml
+title Component Diagram – API-Key Generator Backend
+
+skinparam componentStyle rectangle
+
+database "PostgreSQL\napikeydb" as DB
+
+package "Persistence layer" {
+  [DatabaseFactory] <<singleton>>
+  component "ApiKeyRepo"        as RepoKey
+  component "InstallationRepo"  as RepoInst
+}
+
+package routes {
+  component "AuthRoutes" as RoutesAuth
+  component "FileRoutes" as RoutesFile
+}
+
+component "Application.module()" as AppMod
+component "application.yaml"     as Conf
+
+AppMod --> RoutesAuth
+AppMod --> RoutesFile
+AppMod --> DatabaseFactory
+DatabaseFactory --> DB
+RoutesAuth --> RepoKey
+RoutesAuth --> RepoInst
+RoutesFile --> RepoKey
+@enduml
