@@ -1,0 +1,13 @@
+ktor:
+  deployment:
+    port: 8080                # ⇒ http://localhost:8080
+  application:
+    modules:
+      - com.egssmart.ApplicationKt.module   # <- ruta completa al módulo raíz
+
+# Bloque de configuración propio para la capa de persistencia
+database:
+  url: jdbc:postgresql://192.168.1.101:5432/apikeydb_pavm
+  driver: org.postgresql.Driver
+  user: apikey
+  password: apikey
